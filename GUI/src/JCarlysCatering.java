@@ -3,7 +3,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
-import java.util.InputMismatchException;
+
 
 public class JCarlysCatering extends JFrame implements ItemListener, ActionListener
 {
@@ -36,6 +36,8 @@ public class JCarlysCatering extends JFrame implements ItemListener, ActionListe
 	JCheckBox asianCucumber = new JCheckBox("Side-Asian Cucumber");
 	JCheckBox bakedPotato = new JCheckBox("Side-Baked Potato");
 	JCheckBox mashedPotato = new JCheckBox("Side-Mashed Potato");
+	JButton exitButton = new JButton("Exit");
+
 	
 	/*
 	 * Create check box for dessert
@@ -215,7 +217,15 @@ public class JCarlysCatering extends JFrame implements ItemListener, ActionListe
 		gbc.gridwidth=4;
 		add(orderSummary,gbc);
 		
+		 gbc.gridx=1;
+	     gbc.gridy=14;
+	     gbc.weighty=1;
+	     gbc.gridwidth=1;
+	     exitButton.setFocusable(false);
+	     add(exitButton,gbc);
+		
 		guestNum.addActionListener(this);
+		exitButton.addActionListener(this);
 		primeRib.addItemListener(this);
 		roastedChicken.addItemListener(this);
 		grilledSalmon.addItemListener(this);
@@ -242,6 +252,11 @@ public class JCarlysCatering extends JFrame implements ItemListener, ActionListe
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
+		if(e.getSource()==exitButton)
+		{
+			System.exit(0);
+		}
 		
 		if(e.getSource()==guestNum)
 		{
